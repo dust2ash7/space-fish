@@ -190,7 +190,7 @@
       vy: 0,
       r: 16,
       cool: 0,
-      inv: 4.2,
+      inv: 10.5,
       shield: 0,
       rapid: 0,
       bloom: 0,
@@ -223,10 +223,12 @@
     const grunts = n === 1 ? 3 : 3 + n * 2;
     const spreaders = n === 1 ? 0 : Math.floor(n / 2);
     const tanks = n < 3 ? 0 : (n % 3 === 0 ? 1 + Math.floor(n / 9) : 0);
-    let t = n === 1 ? 4.0 : 1.2;
+    let t = n === 1 ? 5.5 : 1.4;
     for (let i = 0; i < grunts; i++) {
-      q.push({ at: t, type: "grunt", x: 70 + (i % 5) * 80 + rand(-10, 10) });
-      t += n === 1 ? 1.35 : Math.max(0.22, 0.48 - n * 0.015);
+      q.push({ at: t, type: "grunt", x: n === 1
+        ? (i % 2 === 0 ? rand(48, 110) : rand(370, 432))
+        : 70 + (i % 5) * 80 + rand(-10, 10) });
+      t += n === 1 ? 1.6 : Math.max(0.22, 0.48 - n * 0.015);
     }
     for (let i = 0; i < spreaders; i++) {
       q.push({ at: (n === 1 ? 4.5 : 2.2) + i * 1.4, type: "spreader", x: 90 + (i % 3) * 150 });
@@ -252,7 +254,7 @@
       phase: rand(0, TAU),
     };
     if (type === "grunt") {
-      Object.assign(base, { hp: 1, r: 13, speed: (G.wave === 1 ? 36 : 54) + G.wave * 4, worth: 100 });
+      Object.assign(base, { hp: 1, r: 13, speed: (G.wave === 1 ? 28 : 54) + G.wave * 4, worth: 100 });
     } else if (type === "spreader") {
       Object.assign(base, { hp: 3 + Math.floor(G.wave / 4), r: 20, speed: 48 + G.wave * 2, worth: 250 });
     } else {
@@ -829,7 +831,7 @@
       const s = G.spawnQ.shift();
       spawnEnemy(s.type, s.x);
     }
-    if (!G.spawnQ.length && !G.enemies.length && G.waveClock > (G.wave === 1 ? 14 : 9)) {
+    if (!G.spawnQ.length && !G.enemies.length && G.waveClock > (G.wave === 1 ? 18 : 10)) {
       G.wave += 1;
       queueWave(G.wave);
     }
@@ -914,11 +916,13 @@
         hitPlayer();
       }
     }
-    for (let i = 0; i < G.enemies.length; i++) {
-      const e = G.enemies[i];
-      if (Math.hypot(e.x - p.x, e.y - p.y) < e.r + p.r - 4) {
-        hitPlayer();
-        break;
+    if (G.waveClock > 10.5) {
+      for (let i = 0; i < G.enemies.length; i++) {
+        const e = G.enemies[i];
+        if (Math.hypot(e.x - p.x, e.y - p.y) < e.r + p.r - 6) {
+          hitPlayer();
+          break;
+        }
       }
     }
     G.drops.forEach((d) => {
