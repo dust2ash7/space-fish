@@ -1,0 +1,25 @@
+{
+  "name": "Space Fish",
+  "short_name": "Space Fish",
+  "description": "Pilot a luminous koi starfighter through a hostile nebula.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#05060e",
+  "theme_color": "#05060e",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
+}
