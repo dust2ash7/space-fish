@@ -1,1 +1,125 @@
-PLACEHOLDER_HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#05060e">
+  <meta name="description" content="Space Fish — pilot a luminous koi starfighter through a hostile nebula. Endless waves, combos, and power-ups.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Space Fish">
+  <meta name="mobile-web-app-capable" content="yes">
+  <title>Space Fish</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="atmosphere" aria-hidden="true"></div>
+  <div id="live" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+  <div id="app">
+    <div id="stage" class="stage">
+    <canvas id="game" width="480" height="720" tabindex="0" aria-label="Space Fish game canvas"></canvas>
+
+    <header class="hud" id="hud" hidden>
+      <div class="hud-row hud-top">
+        <p class="brand-mini" aria-hidden="true">Space Fish</p>
+        <div class="hud-actions">
+          <button type="button" id="btn-pause" class="hud-btn" aria-label="Pause game">Pause</button>
+          <button type="button" id="btn-mute" class="hud-btn" aria-pressed="false" aria-label="Mute sound">Sound on</button>
+        </div>
+      </div>
+      <div class="hud-row hud-stats">
+        <div class="stat">
+          <span class="stat-label">Score</span>
+          <strong id="hud-score">0</strong>
+        </div>
+        <div class="stat stat-combo" id="combo-wrap">
+          <span class="stat-label">Combo</span>
+          <strong id="hud-combo">×1</strong>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Wave</span>
+          <strong id="hud-wave">1</strong>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Best</span>
+          <strong id="hud-best">0</strong>
+        </div>
+      </div>
+      <div class="hud-row hud-status">
+        <div id="lives" class="lives" aria-label="Lives remaining"></div>
+        <div id="power-pills" class="pills" aria-label="Active power-ups"></div>
+      </div>
+    </header>
+
+    <div id="touch" class="touch" hidden>
+      <div class="stick-wrap">
+        <span class="touch-label" id="stick-label">Move</span>
+        <div id="stick" class="stick" role="application" aria-labelledby="stick-label" aria-label="Virtual joystick. Drag to steer the fish.">
+          <div id="stick-knob" class="stick-knob"></div>
+        </div>
+      </div>
+      <div class="fire-wrap">
+        <span class="touch-label" id="fire-label">Fire</span>
+        <button type="button" id="btn-fire" class="fire-btn" aria-labelledby="fire-label" aria-label="Hold to fire">Fire</button>
+      </div>
+    </div>
+
+    <section id="overlay-start" class="overlay is-open" aria-labelledby="title-start" role="dialog">
+      <div class="panel">
+        <p class="eyebrow">Nebula run · v4</p>
+        <h1 id="title-start" class="wordmark">Space Fish</h1>
+        <p class="lede">You are a koi-shaped starfighter. Thread the dark, keep the combo, don’t become kelp.</p>
+        <ul class="how">
+          <li><strong>Move</strong> — arrows or WASD. On a phone, drag the stick.</li>
+          <li><strong>Fire</strong> — space, click, or hold Fire. Rapid and bloom drop from wrecks.</li>
+          <li><strong>Survive</strong> — three lives, a gold shield, endless waves.</li>
+        </ul>
+        <p class="best-line">Best run <strong id="start-best">0</strong></p>
+        <div class="actions">
+          <button type="button" id="btn-play" class="btn-primary">Launch</button>
+          <button type="button" id="btn-mute-start" class="btn-ghost" aria-pressed="false" aria-label="Mute sound">Sound on</button>
+        </div>
+        <p class="hint">P pauses · M mutes · tabbing away pauses the run</p>
+      </div>
+    </section>
+
+    <section id="overlay-pause" class="overlay" aria-labelledby="title-pause" role="dialog" hidden>
+      <div class="panel panel-slim">
+        <h2 id="title-pause" class="wordmark wordmark-sm">Paused</h2>
+        <p class="lede">The nebula holds its breath.</p>
+        <div class="actions">
+          <button type="button" id="btn-resume" class="btn-primary">Resume</button>
+          <button type="button" id="btn-quit" class="btn-ghost">Abandon run</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="overlay-over" class="overlay" aria-labelledby="title-over" role="dialog" hidden>
+      <div class="panel">
+        <p class="eyebrow" id="over-eyebrow">Hull breach</p>
+        <h2 id="title-over" class="wordmark wordmark-sm">Game over</h2>
+        <p class="lede" id="over-copy">The school scattered. Try another current.</p>
+        <dl class="results">
+          <div><dt>Score</dt><dd id="over-score">0</dd></div>
+          <div><dt>Best</dt><dd id="over-best">0</dd></div>
+          <div><dt>Wave</dt><dd id="over-wave">1</dd></div>
+        </dl>
+        <div class="actions">
+          <button type="button" id="btn-retry" class="btn-primary">Pilot again</button>
+          <button type="button" id="btn-home" class="btn-ghost">Title</button>
+        </div>
+      </div>
+    </section>
+    </div>
+  </div>
+
+  <script src="script.js?v=4b"></script>
+</body>
+</html>
