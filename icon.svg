@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Space Fish">
+  <defs>
+    <radialGradient id="void" cx="50%" cy="42%" r="70%">
+      <stop offset="0%" stop-color="#1a1630"/>
+      <stop offset="55%" stop-color="#0a0b18"/>
+      <stop offset="100%" stop-color="#05060e"/>
+    </radialGradient>
+    <linearGradient id="koi" x1="50%" y1="8%" x2="50%" y2="92%">
+      <stop offset="0%" stop-color="#fff4d2"/>
+      <stop offset="28%" stop-color="#ffc14a"/>
+      <stop offset="70%" stop-color="#ff7a3d"/>
+      <stop offset="100%" stop-color="#e23d6e"/>
+    </linearGradient>
+    <linearGradient id="fin" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7cf0ff"/>
+      <stop offset="100%" stop-color="#3aa0ff"/>
+    </linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="10" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="512" height="512" rx="108" fill="url(#void)"/>
+  <circle cx="118" cy="96" r="2.2" fill="#d7e7ff" opacity=".9"/>
+  <circle cx="390" cy="140" r="1.6" fill="#9be7ff" opacity=".7"/>
+  <circle cx="430" cy="400" r="1.8" fill="#fff" opacity=".55"/>
+  <circle cx="80" cy="360" r="1.4" fill="#ffd08a" opacity=".6"/>
+  <g filter="url(#glow)" transform="translate(256 268)">
+    <path d="M0 118 C 28 92, 48 70, 42 28 C 78 48, 92 18, 108 8 C 72 -4, 48 -28, 18 -22 C 28 -78, 8 -128, 0 -148 C -8 -128, -28 -78, -18 -22 C -48 -28, -72 -4, -108 8 C -92 18, -78 48, -42 28 C -48 70, -28 92, 0 118 Z" fill="url(#koi)"/>
+    <path d="M-42 28 C -70 8, -92 -8, -118 -6 C -86 22, -64 48, -36 52 Z" fill="url(#fin)" opacity=".85"/>
+    <path d="M42 28 C 70 8, 92 -8, 118 -6 C 86 22, 64 48, 36 52 Z" fill="url(#fin)" opacity=".85"/>
+    <ellipse cx="-10" cy="-78" rx="7" ry="9" fill="#1a1020"/>
+    <circle cx="-8" cy="-80" r="3.2" fill="#7cf0ff"/>
+    <circle cx="18" cy="-20" r="16" fill="#e23d6e" opacity=".55"/>
+    <circle cx="-22" cy="12" r="11" fill="#fff4d2" opacity=".35"/>
+  </g>
+</svg>
