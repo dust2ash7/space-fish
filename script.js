@@ -1,1 +1,1 @@
-@file:///workspace/spacefish-music/script.js
+PLACEHOLDER_WILL_FAIL
