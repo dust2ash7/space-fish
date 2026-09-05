@@ -1,7 +1,7 @@
 (() => {
   const s = document.currentScript;
   const v = (s && s.src && s.src.split("v=")[1]) || "6";
-  const urls = ["sf-a.js?v=" + v, "sf-b.js?v=" + v];
+  const urls = ["c0.js?v=" + v, "c1.js?v=" + v, "c2.js?v=" + v, "c3.js?v=" + v, "c4.js?v=" + v, "c5.js?v=" + v, "c6.js?v=" + v, "c7.js?v=" + v, "c8.js?v=" + v, "c9.js?v=" + v, "c10.js?v=" + v];
   let chain = Promise.resolve();
   const parts = [];
   urls.forEach((u) => {
