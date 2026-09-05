@@ -1,46 +1,22 @@
-const CACHE = "spacefish-v6c";
-const ASSETS = [
-  "./",
-  "./index.html",
-  "./style.css",
-  "./script.js",
-  "./sf-q0.js",
-  "./sf-q1.js",
-  "./sf-q2.js",
-  "./sf-q3.js",
-  "./manifest.json",
-  "./icon.svg"
-];
-
+const CACHE = "spacefish-v6d";
+const ASSETS = ["./","./index.html","./style.css","./script.js","./sf-ma.js","./sf-mb.js","./manifest.json","./icon.svg"];
 self.addEventListener("install", (event) => {
-  event.waitUntil(
-    caches.open(CACHE).then((cache) => cache.addAll(ASSETS)).then(() => self.skipWaiting())
-  );
+  event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(ASSETS)).then(() => self.skipWaiting()));
 });
-
 self.addEventListener("activate", (event) => {
-  event.waitUntil(
-    caches.keys().then((keys) =>
-      Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k)))
-    ).then(() => self.clients.claim())
-  );
+  event.waitUntil(caches.keys().then((keys) => Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k)))).then(() => self.clients.claim()));
 });
-
 self.addEventListener("fetch", (event) => {
   const req = event.request;
   if (req.method !== "GET") return;
-  event.respondWith(
-    caches.match(req).then((cached) => {
-      const fetchPromise = fetch(req)
-        .then((res) => {
-          if (res && res.status === 200 && req.url.startsWith(self.location.origin)) {
-            const copy = res.clone();
-            caches.open(CACHE).then((cache) => cache.put(req, copy));
-          }
-          return res;
-        })
-        .catch(() => cached);
-      return cached || fetchPromise;
-    })
-  );
+  event.respondWith(caches.match(req).then((cached) => {
+    const fetchPromise = fetch(req).then((res) => {
+      if (res && res.status === 200 && req.url.startsWith(self.location.origin)) {
+        const copy = res.clone();
+        caches.open(CACHE).then((cache) => cache.put(req, copy));
+      }
+      return res;
+    }).catch(() => cached);
+    return cached || fetchPromise;
+  }));
 });
