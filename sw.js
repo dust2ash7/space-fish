@@ -1,9 +1,11 @@
-const CACHE = "spacefish-v6";
+const CACHE = "spacefish-v6e";
 const ASSETS = [
   "./",
   "./index.html",
   "./style.css",
   "./script.js",
+  "./script.gz.b64.a",
+  "./script.gz.b64.b",
   "./manifest.json",
   "./icon.svg"
 ];
