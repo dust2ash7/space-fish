@@ -1,4 +1,4 @@
-const CACHE = "spacefish-v7";
+const CACHE = "spacefish-v8";
 const ASSETS = [
   "./",
   "./index.html",
@@ -7,7 +7,9 @@ const ASSETS = [
   "./script.gz.b64.a",
   "./script.gz.b64.b",
   "./manifest.json",
-  "./icon.svg"
+  "./icon.svg",
+  "./audio/music-bed.mp3",
+  "./audio/CREDITS.md"
 ];
 
 self.addEventListener("install", (event) => {
