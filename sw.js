@@ -1,4 +1,4 @@
-const CACHE = "spacefish-v6f";
+const CACHE = "spacefish-v7";
 const ASSETS = [
   "./",
   "./index.html",
