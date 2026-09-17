@@ -1,3 +1,11 @@
+<p align="center">
+  <img src="brand/logo-c.png" alt="Raven Flock" width="280" />
+</p>
+
+<p align="center"><strong>Raven Flock — Consider the ravens.</strong></p>
+
+---
+
 # Space Fish
 
 A vertical / dual-axis scrolling space shooter. You are a **space fish** — a koi-shaped starfighter — blasting through a neon nebula.

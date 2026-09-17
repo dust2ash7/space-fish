@@ -1,4 +1,4 @@
-const CACHE = "spacefish-v12";
+const CACHE = "spacefish-v13";
 const ASSETS = [
   "./",
   "./index.html",
@@ -8,6 +8,13 @@ const ASSETS = [
   "./script.gz.b64.b",
   "./manifest.json",
   "./icon.svg",
+  "./favicon-32.png",
+  "./icon-192.png",
+  "./icon-512.png",
+  "./icon-192-maskable.png",
+  "./icon-512-maskable.png",
+  "./apple-touch-icon.png",
+  "./assets/brand/raven-flock-mark-only.svg",
   "./audio/CREDITS.md"
 ];
 
