@@ -10,7 +10,7 @@
 
 A scrolling space shooter. You are a **space fish** — a koi-shaped starfighter — through a neon nebula.
 
-**Play:** [https://dust2ash7.github.io/space-fish/](https://dust2ash7.github.io/space-fish/)
+**Play:** [https://raven-flock.github.io/space-fish/](https://raven-flock.github.io/space-fish/)
 
 ## How to play
 
@@ -29,7 +29,7 @@ python3 -m http.server 8080
 
 Then visit `http://localhost:8080/`.
 
-GitHub Pages: `https://dust2ash7.github.io/space-fish/`
+GitHub Pages: `https://raven-flock.github.io/space-fish/`
 
 ---
 
